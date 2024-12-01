@@ -1,17 +1,21 @@
-public class SummingDigits {
-    public static void main(String[] args) throws Exception {
-        System.out.println(sumDigits(1000));
-    }
-    public static int sumDigits(long n) {
-        int firstDigit = 0;
-        int digitCheck = (Long.toString(n)).length();
-        for (int i = 0; i < digitCheck; i++ ){
-        double powerOfI = Math.pow(10, i);
-        int integerPowerOfI = (int)powerOfI;
-        firstDigit += (n/integerPowerOfI) % 10;
-        }
-                return firstDigit;
-        
+import java.util.Scanner;
 
+public class SummingDigits {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number to sum its digits: ");
+        long n = scanner.nextLong();
+        System.out.println("The sum of the digits in " + n + " is: " + sumDigits(n));
+        scanner.close();
+    }
+
+    public static int sumDigits(long n) {
+        n = Math.abs(n); // 
+        int sum = 0;
+        while (n != 0) {
+            sum += n % 10; 
+            n /= 10; 
+        }
+        return sum;
     }
 }
